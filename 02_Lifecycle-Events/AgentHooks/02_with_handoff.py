@@ -1,10 +1,11 @@
-from agents import Agent, AsyncOpenAI, OpenAIChatCompletionsModel, Runner, RunContextWrapper, AgentHooks, set_tracing_disabled
+from agents import Agent, AsyncOpenAI, OpenAIChatCompletionsModel, Runner, RunContextWrapper, AgentHooks, set_tracing_disabled, enable_verbose_stdout_logging
 from dotenv import load_dotenv
 import asyncio
 import os
 
 load_dotenv()
-set_tracing_disabled(True)
+# set_tracing_disabled(True)
+enable_verbose_stdout_logging()
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 url = os.getenv("BASE_URL")
 MODEL = 'gemini-2.5-flash'
@@ -57,7 +58,7 @@ start_agent = Agent(
 async def main():
     await Runner.run(
         start_agent,
-        input=f"What is the double of 4?",
+        input=f"What is the multipier of 4?",
     )
 
     print("Done!")
