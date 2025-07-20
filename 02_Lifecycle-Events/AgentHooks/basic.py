@@ -26,21 +26,13 @@ class AnAgent(AgentHooks):
 
     async def on_start(self, context:RunContextWrapper, agent:Agent) -> None:
         self.event_counter += 1
-        Usage = context.usage
-        prompt_token = Usage.input_tokens if Usage else 0
-        response_token = Usage.output_tokens if Usage else 0
-        total_tokens = prompt_token + response_token
         print(f"\n{self.agent_name} {self.event_counter}:\n{agent.name} Agent Started!"
-              f"\nPROMPT TOKEN: {prompt_token}\nRESPONSE TOKEN: {response_token}\nTOTAL TOKENS: {total_tokens}")
+              f"\nUsage: {context.usage}")
             
     async def on_end(self, context:RunContextWrapper, agent:Agent, output: any) -> None:
         self.event_counter += 1
-        Usage = context.usage
-        prompt_token = Usage.input_tokens if Usage else 0
-        response_token = Usage.output_tokens if Usage else 0
-        total_tokens = prompt_token + response_token
         print(f"\n{self.agent_name} {self.event_counter}:\n{agent.name} Agent Ended!"
-              f"\nPROMPT TOKEN: {prompt_token}\nRESPONSE TOKEN: {response_token}\nTOTAL TOKENS: {total_tokens}"
+              f"\nUsage: {context.usage}"
               f"\nOUTPUT:\n\n{output}")
             
 agent = Agent(
