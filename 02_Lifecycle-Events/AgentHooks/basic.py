@@ -57,25 +57,25 @@ asyncio.run(main())
 
 # LinkedIn Post Maker 1:
 # LinkedIn Post Maker Agent Started!
-# PROMPT TOKEN: 0
-# RESPONSE TOKEN: 0
-# TOTAL TOKENS: 0
+# Usage: Usage(requests=0, input_tokens=0, input_tokens_details=InputTokensDetails(cached_tokens=0), output_tokens=0, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=0)
 
 # LinkedIn Post Maker 2:
 # LinkedIn Post Maker Agent Ended!
-# PROMPT TOKEN: 42
-# RESPONSE TOKEN: 189
-# TOTAL TOKENS: 231
+# Usage: Usage(requests=1, input_tokens=42, input_tokens_details=InputTokensDetails(cached_tokens=0), output_tokens=220, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=1258)
 # OUTPUT:
 
-# Here's a professional and concise LinkedIn post about the future of AI:
+# Here's a professional LinkedIn post about the future of AI:
 
-# The future of AI isn't just a distant concept; it's unfolding right before our eyes, promising to redefine industries, roles, and how we interact with technology.
+# ---
 
-# Rather than just automation, we're seeing a shift towards powerful human-AI synergy. Imagine AI as an intelligent co-pilot, augmenting our capabilities and unlocking new levels of creativity and efficiency. This isn't about replacing human ingenuity, but amplifying it.
+# 💡 The "future of AI" isn't some distant concept; it's unfolding at an unprecedented pace, transforming how we live and work.
 
-# Of course, this journey comes with crucial conversations around ethics, transparency, and responsible development. Navigating these complexities will be key to harnessing AI's full potential for good.
+# It's increasingly clear that AI's greatest potential lies not in replacing human intellect, but in **augmenting** it. Imagine enhanced creativity, accelerated problem-solving, and entirely new ways of collaborating. From hyper-personalized experiences to breakthroughs in scientific research and sustainable solutions, AI is poised to redefine what's possible across every industry.
 
-# The era of augmentation is here. How do you see AI shaping your industry or role in the next decade? Share your thoughts! 👇
+# However, this future also demands our mindful attention to ethics, transparency, and inclusivity. Responsible development isn't just a buzzword; it's the foundation for a beneficial AI-powered world.
 
-#AI #FutureOfWork #Innovation #ArtificialIntelligence #TechForGood #DigitalTransformation
+# How do you envision AI shaping your industry or role in the coming years? What skills do you believe will be most crucial for thriving in an AI-integrated future?
+
+# Let's discuss! 👇
+
+#AI #ArtificialIntelligence #FutureOfWork #Innovation #TechTrends #DigitalTransformation #HumanAICollaboration
