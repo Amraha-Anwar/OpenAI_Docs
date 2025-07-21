@@ -76,7 +76,6 @@ start_agent = Agent(
 
 )
 
-
 async def main():
     user_input = input("Enter a max number: ")
     await Runner.run(
@@ -115,4 +114,25 @@ asyncio.run(main())
 # Multiplier Agent 4:
 # Multiplier Agent Ended with output:
 # The final result is 90.
+# Done!
+
+# Enter a max number: 92
+# Main Agent 1:
+# Main Agent Started!
+# Main Agent 2:
+# Main Agent started tool random_number
+# Main Agent 3:
+# Main Agent ended tool random_number with result 41
+# Main Agent 4:
+# Main Agent handed off to Multiplier Agent
+# Multiplier Agent 1:
+# Multiplier Agent Started!
+# Multiplier Agent 2:
+# Multiplier Agent started tool multiply_by_two
+# Multiplier Agent 3:
+# Multiplier Agent ended tool multiply_by_two with result 82
+# Multiplier Agent 4:
+# Multiplier Agent Ended with output:
+# The random number generated was 41. When multiplied by 2, the result is 82.
+
 # Done!
