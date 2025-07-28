@@ -14,6 +14,7 @@ from agents import (
 )
 from dotenv import load_dotenv
 from pydantic import BaseModel
+import asyncio
 import os
 
 
@@ -57,17 +58,21 @@ inputGuardrail_agent = Agent(
     name = "Input Guardrail Agent",
     instructions = 
     "You are a input Guardrail Agent. Check User's input if it is cooking related or not"
-    "if user's input is related to cooking or baking return an structured output with 'CookingRelatedOutput' as boolean and your final result as reasoning.",
+    "if user's input is related to cooking or baking return a structured output with 'CookingRelatedOutput' as boolean and your final result as reasoning.",
     output_type = CookingRelatedOutput
 )
 
 # output guardrail agent
 outputGuardrail_agent = Agent(
-    name = "Output Guardrail Agent"
+    name = "Output Guardrail Agent",
+    instructions = 
+    "You are a output Guardrail Agent. Check if Agent's output is related to cooking or not"
+    "if Agent's ouptut is related to cooking or baking return a structured output with 'CookingRelatedOutput2' as boolean and your final result as reasoning."
 )
 
+# input guardrail function which will use input guardrail agent and handle output
 @input_guardrail
-async def cooking_related_guardrail(
+async def cooking_input_guardrail(
     ctx: RunContextWrapper[None],
     agent : Agent,
     input : str | list[TResponseInputItem]
@@ -75,13 +80,42 @@ async def cooking_related_guardrail(
     result = await Runner.run(
         inputGuardrail_agent, input, context = ctx.context, run_config = config)
     final_output = result.final_output_as(CookingRelatedOutput)
-    output_info= final_output
-    tripwire_triggered = not final_output.is_cooking_input  #agr user ka input cooking related nhi hua to ye trigger hoga
+    return GuardrailFunctionOutput(
+        output_info= final_output,
+        tripwire_triggered = not final_output.is_cooking_input  #agr user ka input cooking related nhi hua to ye trigger hoga
+    )
+
+# output guardrail function which will use output guardrail agent and handle output
+@output_guardrail
+async def cooking_output_guardrail(
+    ctx: RunContextWrapper,
+    agent : Agent,
+    output : FinalResponse
+) -> GuardrailFunctionOutput:
+    result = await Runner.run(outputGuardrail_agent, output, context = ctx.context, run_config = config)
+    final_output = result.final_output_as(CookingRelatedOutput2)
+    return GuardrailFunctionOutput(
+        output_info = final_output,
+        tripwire_triggered = not final_output.is_cooking_output  #agr agent ka output cooking rlated nhi hua tb ye trigger hoga
+    )
 
 cook_agent = Agent(
     name = "Cook Agent",
     instructions = "You are a Cook Agent. Help User if they ask anything cooking related"
     "Answer accuratley and consicely",
     model = model,
-    input_guardrails =cooking_related_guardrail
+    input_guardrails =cooking_input_guardrail,
+    output_guardrails = cooking_output_guardrail,
+    output_type = FinalResponse
 )
+
+async def main():
+    try:
+        result = await Runner.run(cook_agent, "Tell me the recipe of 2 pond chocolate Cake", run_config = config)
+        print(result.final_output)
+    except InputGuardrailTripwireTriggered:
+        print("Input Guardrail Tripped:\n\tI am a cook Agent and unfortunately your input is not Cooking related :( ")
+    except OutputGuardrailTripwireTriggered:
+        print("Output Guardrail Tripped:\n\tOops! Agent's response is not cooking related :( ")
+
+asyncio.run(main())
