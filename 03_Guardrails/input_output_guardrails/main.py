@@ -22,7 +22,7 @@ import os
 load_dotenv()
 gemini_api_key = os.getenv('GEMINI_API_KEY')
 url = os.getenv("BASE_URL")
-MODEL = 'gemini-2.5-flash'
+MODEL = 'gemini-2.0-flash'
 
 client = AsyncOpenAI(
     api_key = gemini_api_key,
@@ -35,7 +35,8 @@ model = OpenAIChatCompletionsModel(
 )
 
 config = RunConfig(
-    model_provider = model,
+    model = model,
+    model_provider = client,
     tracing_disabled = True
 )
 
@@ -57,8 +58,8 @@ class CookingRelatedOutput2(BaseModel):
 inputGuardrail_agent = Agent(
     name = "Input Guardrail Agent",
     instructions = 
-    "You are a input Guardrail Agent. Check User's input if it is cooking related or not"
-    "if user's input is related to cooking or baking return a structured output with 'CookingRelatedOutput' as boolean and your final result as reasoning.",
+    "You are a input Guardrail Agent. Check User's input if it is cooking related or not."
+    "if user's input is related to cooking return a structured output with 'CookingRelatedOutput' as boolean and your final result as reasoning.",
     output_type = CookingRelatedOutput
 )
 
@@ -66,8 +67,9 @@ inputGuardrail_agent = Agent(
 outputGuardrail_agent = Agent(
     name = "Output Guardrail Agent",
     instructions = 
-    "You are a output Guardrail Agent. Check if Agent's output is related to cooking or not"
-    "if Agent's ouptut is related to cooking or baking return a structured output with 'CookingRelatedOutput2' as boolean and your final result as reasoning."
+    "You are a output Guardrail Agent. Check if Agent's output is related to cooking or not."
+    "if Agent's ouptut is related to cooking return a structured output with 'CookingRelatedOutput2' as boolean and your final result as reasoning.",
+    output_type = CookingRelatedOutput2
 )
 
 # input guardrail function which will use input guardrail agent and handle output
@@ -75,7 +77,7 @@ outputGuardrail_agent = Agent(
 async def cooking_input_guardrail(
     ctx: RunContextWrapper[None],
     agent : Agent,
-    input : str | list[TResponseInputItem]
+    input : str | list
 ) -> GuardrailFunctionOutput:
     result = await Runner.run(
         inputGuardrail_agent, input, context = ctx.context, run_config = config)
@@ -92,7 +94,7 @@ async def cooking_output_guardrail(
     agent : Agent,
     output : FinalResponse
 ) -> GuardrailFunctionOutput:
-    result = await Runner.run(outputGuardrail_agent, output, context = ctx.context, run_config = config)
+    result = await Runner.run(outputGuardrail_agent, output.response , context = ctx.context, run_config = config)
     final_output = result.final_output_as(CookingRelatedOutput2)
     return GuardrailFunctionOutput(
         output_info = final_output,
@@ -104,14 +106,22 @@ cook_agent = Agent(
     instructions = "You are a Cook Agent. Help User if they ask anything cooking related"
     "Answer accuratley and consicely",
     model = model,
-    input_guardrails =cooking_input_guardrail,
-    output_guardrails = cooking_output_guardrail,
+    input_guardrails = [cooking_input_guardrail],
+    output_guardrails = [cooking_output_guardrail],
     output_type = FinalResponse
 )
 
 async def main():
     try:
-        result = await Runner.run(cook_agent, "Tell me the recipe of 2 pond chocolate Cake", run_config = config)
+        result = await Runner.run(cook_agent, "generate a short story on 'an ambitious girl'.", run_config = config)
+        print(result.final_output)
+    except InputGuardrailTripwireTriggered:
+        print("Input Guardrail Tripped:\n\tI am a cook Agent and unfortunately your input is not Cooking related :( ")
+    except OutputGuardrailTripwireTriggered:
+        print("Output Guardrail Tripped:\n\tOops! Agent's response is not cooking related :( ")
+
+    try:
+        result = await Runner.run(cook_agent, "Can you tell me the recipe of Biryani?", run_config = config)
         print(result.final_output)
     except InputGuardrailTripwireTriggered:
         print("Input Guardrail Tripped:\n\tI am a cook Agent and unfortunately your input is not Cooking related :( ")
@@ -119,3 +129,13 @@ async def main():
         print("Output Guardrail Tripped:\n\tOops! Agent's response is not cooking related :( ")
 
 asyncio.run(main())
+
+
+# OUTPUT 👇🏻
+
+# Input Guardrail Tripped:
+#         I am a cook Agent and unfortunately your input is not Cooking related :( 
+
+# response="I can help you with that. There are many regional variations of Biryani. To give you the best recipe, could you please specify which style you'd like? (e.g., Hyderabadi, Lucknowi, Sindhi, Kolkata, etc.) Or, would you prefer a simple, basic Biryani recipe?"
+
+
