@@ -40,7 +40,12 @@ agent = Agent(
 
 async def main():
     result = await Runner.run(agent, "what is meant by the term 'AI'?", run_config=config)
-    print(result)
+    # print(result.last_agent)
+    # print(result.final_output)
+    # print(result)
+    # print(result.input)
+    print(result.raw_responses)
+
 
 
 if __name__ == "__main__":
