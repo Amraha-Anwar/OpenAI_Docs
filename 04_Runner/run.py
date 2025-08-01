@@ -39,9 +39,32 @@ agent = Agent(
 )
 
 async def main():
-    result = await agent.run("what is meant by the term 'AI'?")
+    result = await Runner.run(agent, "what is meant by the term 'AI'?", run_config=config)
     print(result)
 
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
+# OUTPUT 👇🏻
+
+# RunResult:
+# - Last agent: Agent(name="Gemini Agent", ...)
+# - Final output (str):
+#     The term "AI" stands for **Artificial Intelligence**.
+    
+#     In broad terms, AI refers to the ability of a computer or machine to mimic human cognitive functions such as:
+    
+#     *   **Learning:** Acquiring information and rules for using the information.
+#     *   **Reasoning:** Using rules to reach conclusions (either definite or approximate).
+#     *   **Problem-solving:** Devising strategies to overcome difficulties.
+#     *   **Perception:** Using sensors to deduce aspects of the world.
+#     *   **Understanding natural language:** Processing and understanding human languages (like English or Spanish).
+    
+#     Essentially, AI aims to create systems that can perform tasks that typically require human intelligence.
+# - 1 new item(s)
+# - 1 raw response(s)
+# - 0 input guardrail result(s)
+# - 0 output guardrail result(s)
+# (See `RunResult` for more details)
