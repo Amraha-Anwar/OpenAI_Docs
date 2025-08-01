@@ -3,13 +3,16 @@ from agents import (
     AsyncOpenAI,
     OpenAIChatCompletionsModel,
     Runner,
-    RunConfig
+    RunConfig,
+    enable_verbose_stdout_logging
 )
 from dotenv import load_dotenv
 import os
 import asyncio
 
+enable_verbose_stdout_logging()
 load_dotenv()
+
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 url = os.getenv("BASE_URL")
 
@@ -32,19 +35,24 @@ config = RunConfig(
     tracing_disabled=True,
 )
 
+urdu_agent = Agent(
+    name = "Urdu Agent",
+    instructions = "You are a helpful assistant that can answer questions and help with tasks but in Roman Urdu.",
+    handoff_description = "You are a helpful assistant that can answer questions in Roman Urdu.",
+    model= model,
+)
+
 agent = Agent(
     name = "Gemini Agent",
     instructions = "You are a helpful assistant that can answer questions and help with tasks.",
     model = model,
+    handoffs = [urdu_agent],
 )
 
 async def main():
     result = await Runner.run(agent, "what is meant by the term 'AI'?", run_config=config)
-    # print(result.last_agent)
-    # print(result.final_output)
-    # print(result)
-    # print(result.input)
-    print(result.raw_responses)
+
+    print(result.final_output)
 
 
 

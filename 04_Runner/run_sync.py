@@ -3,13 +3,15 @@ from agents import (
     AsyncOpenAI,
     OpenAIChatCompletionsModel,
     Runner,
-    RunConfig
+    RunConfig,
+    enable_verbose_stdout_logging
 )
 from dotenv import load_dotenv
 import os
-import asyncio
 
+enable_verbose_stdout_logging()
 load_dotenv()
+
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 url = os.getenv("BASE_URL")
 
