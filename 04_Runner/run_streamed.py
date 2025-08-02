@@ -6,6 +6,7 @@ from agents import (
     RunConfig,
     enable_verbose_stdout_logging
 )
+from openai.types.responses import ResponseTextDeltaEvent
 from dotenv import load_dotenv
 import os
 import asyncio
@@ -42,17 +43,19 @@ urdu_agent = Agent(
     model= model,
 )
 
-agent = Agent(
-    name = "Gemini Agent",
-    instructions = "You are a helpful assistant that can answer questions and help with tasks. Handoff to another agent if needed.",
-    model = model,
-    handoffs = [urdu_agent],
-)
 
 async def main():
-    result = await Runner.run(agent, "what is meant by the term 'AI'?", run_config=config)
+    agent = Agent(
+        name="Joker",
+        instructions="You are a helpful assistant.",
+        model = model
+    )
 
+    result = Runner.run_streamed(agent, input="Please tell me 5 jokes.")
     async for event in result.stream_events():
-        print(event)
+        if event.type == "raw_response_event" and isinstance(event.data, ResponseTextDeltaEvent):
+            print(event.data.delta, end="", flush=True)
 
-asyncio.run(main())
+
+if __name__ == "__main__":
+    asyncio.run(main())
