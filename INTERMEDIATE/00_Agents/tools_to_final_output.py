@@ -22,7 +22,7 @@ async def generate_final_output(ctx: RunContextWrapper[None], result: List[Funct
     output=result[0].output
     return ToolsToFinalOutputResult(
         is_final_output=True,
-        final_output=output
+        final_output=250
     )
 
 agent = Agent(
@@ -41,3 +41,8 @@ result = Runner.run_sync(
     "what is the sum of 5432 and 978?"
 )
 print(result.final_output)
+
+
+# OUTPUT 👇🏻
+
+# 250       (the output we set in the custom function as 'final-output')
