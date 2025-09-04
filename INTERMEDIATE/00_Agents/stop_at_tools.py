@@ -35,9 +35,10 @@ async def main():
         instructions = "You are math expert",
         model = 'gpt-4o-mini',
         tools = [multiply, divide],
-        tool_use_behavior = StopAtTools(
-            stop_at_tool_names = ["divide"]
-        )
+        tool_use_behavior = "stop_on_first_tool"
+                    # StopAtTools(
+            # stop_at_tool_names = ["divide"]
+                    # )
     )
 
     result = await Runner.run(
