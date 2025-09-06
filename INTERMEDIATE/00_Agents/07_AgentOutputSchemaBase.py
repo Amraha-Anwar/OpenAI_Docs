@@ -29,8 +29,8 @@ class CustomAgentOutputSchema(AgentOutputSchemaBase):
         schema["additionalProperties"] = False 
         return schema
         
-    def validate_json(self, json_str:str) -> any:
-        return json_str
+    def validate_json(self, json_obj:dict) -> any:
+        return json_obj
     
 agent = Agent(
     name="CustomOutputAgent",
@@ -45,10 +45,27 @@ async def main():
         input="Provide details about a software engineer whose is currently unemployed but has 5 years of experience.",
     )
 
-    print(result.final_output)
+    # print(result.final_output)
+    print(f"\nOutput schema name: {CustomAgentOutputSchema().name()}\n")
+    print(f"Is plain text: {CustomAgentOutputSchema().is_plain_text()}\n")
+    print(f"Is strict JSON schema: {CustomAgentOutputSchema().is_strict_json_schema()}\n")
+    print(f"JSON Schema: {CustomAgentOutputSchema().json_schema()}\n")
+    print(f"Validated JSON: {CustomAgentOutputSchema().validate_json(result.final_output)}\n")
 
 asyncio.run(main())
 
 # OUTPUT👇🏻
 
-# {"profession":"Software Engineer","is_employed":false,"years_of_experience":5}
+# Output schema name: CustomOutputSchema
+
+# Is plain text: False
+
+# Is strict JSON schema: True
+
+# JSON Schema: {'properties': {'profession': {'title': 'Profession', 'type': 'string'}, 
+                            # 'is_employed': {'title': 'Is Employed', 'type': 'boolean'}, 
+                            # 'years_of_experience': {'title': 'Years Of Experience', 'type': 'integer'}},
+                            # 'required': ['profession', 'is_employed', 'years_of_experience'],
+                            # 'title': 'CustomOutputSchema', 'type': 'object', 'additionalProperties': False}
+
+# Validated JSON: {"profession":"Software Engineer","is_employed":false,"years_of_experience":5}
