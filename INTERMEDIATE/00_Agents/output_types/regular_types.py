@@ -31,3 +31,8 @@ result = Runner.run_sync(
 )
 
 print(result.final_output)
+
+
+# OUTPUT 👇🏻
+
+# name='Amraha' age=20 roll_no=1011 marks=StudentMarks(eng=85, maths=90, chem=88)
