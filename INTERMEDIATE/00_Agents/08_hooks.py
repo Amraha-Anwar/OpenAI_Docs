@@ -5,7 +5,8 @@ from agents import (
     RunHooks,
     RunContextWrapper,
     function_tool,
-    Tool
+    Tool,
+    enable_verbose_stdout_logging,
 )
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -13,6 +14,7 @@ from rich import print
 import asyncio
 
 load_dotenv()
+# enable_verbose_stdout_logging()
 
 # AgentHooks
 class CustomAgentHook(AgentHooks):
