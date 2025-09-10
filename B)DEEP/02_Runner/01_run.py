@@ -12,7 +12,7 @@ from pydantic import BaseModel
 import asyncio
 
 load_dotenv()
-enable_verbose_stdout_logging()
+# enable_verbose_stdout_logging()
 
 class UserInfo(BaseModel):
     name: str
