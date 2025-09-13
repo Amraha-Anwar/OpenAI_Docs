@@ -9,14 +9,13 @@ load_dotenv()
 Model_Settings = ModelSettings(
         temperature = 0.75,
         top_p = 0.1,
-        presence_penalty = 0.5,
+        presence_penalty = 0.8,
         frequency_penalty = 0.75,
         tool_choice = "none",
         parallel_tool_calls = False,
         truncation = "auto",
-        # max_tokens = 250,
+        max_tokens = 250,
         verbosity = 'medium',
-        include_usage = True
     )
 
 config = RunConfig(
@@ -38,6 +37,6 @@ async def main():
         run_config = config
     )
 
-    print(result)
+    print(result.final_output)
 
 asyncio.run(main())
