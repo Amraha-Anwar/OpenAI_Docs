@@ -9,7 +9,7 @@ load_dotenv()
 
 config = RunConfig(
     model = 'gpt-4o-mini'
-    
+
     # 1- model: str | Model | None = None
     """The model to use for the entire agent run. If set, will override the model set on every
     agent. The model_provider passed in below must be able to resolve this model name.
@@ -26,8 +26,7 @@ config = RunConfig(
     # 4-  handoff_input_filter: HandoffInputFilter | None = None
     """A global input filter to apply to all handoffs. If `Handoff.input_filter` is set, then that
     will take precedence. The input filter allows you to edit the inputs that are sent to the new
-    agent. See the documentation in `Handoff.input_filter` for more details.
-    """
+    agent. """
 
     # 5-  input_guardrails: list[InputGuardrail[Any]] | None = None
     """A list of input guardrails to run on the initial run input."""
