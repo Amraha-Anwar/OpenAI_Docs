@@ -89,7 +89,6 @@ async def main():
             agent,
             "Can you suggest me 3 medicines for heart disease?",
             # "Give me the complete details of the patient",
-            # context = patient_information
             context = patient_information
 
         )
