@@ -18,11 +18,11 @@ def summarize_billing_issues(data: HandoffInputData) -> HandoffInputData:
     print("\n\n[ITEM 2]", data.pre_handoff_items)
     print("\n\n[ITEM 1]", data.new_items)
 
-# The corrected part: returns HandoffInputData with correct types
+
     return HandoffInputData(
         input_history=summarized_issue,
-        pre_handoff_items=(),  # Corrected to an empty tuple
-        new_items=(),         # Corrected to an empty tuple
+        pre_handoff_items=(),  
+        new_items=(),         
 )
 
 @function_tool
