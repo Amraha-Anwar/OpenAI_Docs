@@ -46,3 +46,19 @@ result = Runner.run_sync(
 
 print(f"Last Agent: '{result.last_agent.name}'\n")
 print(f"Final Output: '{result.final_output}'\n")
+
+
+# OUTPUT 👇🏻
+
+
+# ---Handing off to Spanish Agent---
+
+# [ITEM 1]: translate 'have a nice day' into spanish.
+
+# [ITEM 2]: ()
+
+# [ITEM 3]: (HandoffCallItem(agent=Agent(...........)
+
+# Last Agent: 'Spanish Speaking Agent'
+
+# Final Output: 'Por supuesto, proporciona el texto que deseas traducir al español.'
