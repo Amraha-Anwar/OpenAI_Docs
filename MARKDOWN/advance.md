@@ -72,3 +72,11 @@ Let's Connect on *[LinkedIn](https://www.linkedin.com/in/amraha-anwar-45bb342b3/
 
 ## Emojis
 
+:sunflower:
+:woozy face:
+:horse:
+🤍
+
+
+---
+
