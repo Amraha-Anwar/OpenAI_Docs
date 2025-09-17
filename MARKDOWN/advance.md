@@ -17,12 +17,12 @@ print("Hello World:)")
 
 ## Code Blocks
  
-<html>
-    <head>
-        <main>
-        </main>
-    </head>
-</html>
+    <html>
+        <head>
+            <main>
+            </main>
+        </head>
+    </html>
 
 
 
