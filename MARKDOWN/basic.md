@@ -111,3 +111,19 @@ ___this is also bold and italic___
 > - Profits were higher than ever.
 >
 > **Everything** is going according to *plan*
+
+
+## Horizontal Rules
+
+
+***
+
+
+
+---
+
+
+
+________
+
+
