@@ -34,6 +34,10 @@ ___this is also bold and italic___
 
 ---
 
+~~this is strikethrough~~
+
+---
+
 ## Colors Unordered List
 - Black
 - Purple

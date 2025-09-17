@@ -31,3 +31,10 @@ print("Hello World:)")
 |------|--------|
 | 1234 | Amraha |
 | 5678 | Zara   |
+
+## Alignment
+
+| Syntax      | Description | Test Text     |
+| :---        |    :----:   |          ---: |
+| Header      | Title       | Here's this   |
+| Paragraph   | Text        | And more      |
