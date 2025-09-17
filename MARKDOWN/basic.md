@@ -1,6 +1,10 @@
 # Heading 1
+HEADING 1
+=========
 
 ## Heading 2
+Heading 2
+----------
 
 ### Heading 3
 
@@ -15,3 +19,4 @@ this is a paragraph
 
 
 this is the first line and here<br>we broke the line
+
