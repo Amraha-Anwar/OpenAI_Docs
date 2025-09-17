@@ -52,3 +52,8 @@ ___this is also bold and italic___
 3. Mustard
 4. Pink
 
+## Colors Ordered List
+1. Black
+6. Purple
+2. Mustard
+8. Pink
