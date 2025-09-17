@@ -15,6 +15,16 @@ console.log("Hello world:)")
 print("Hello World:)")
 ```
 
+## Code Blocks
+ 
+<html>
+    <head>
+        <main>
+        </main>
+    </head>
+</html>
+
+
 
 ## Table
 |  ID  |  Name  |
