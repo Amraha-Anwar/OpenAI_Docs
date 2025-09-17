@@ -47,20 +47,28 @@ print("Hello World:)")
 
 ## URLs & Email Addresses
 
-<amrahaanwar@gmail.com>
+<amrahaanwar@gmail.com>  
+
 <https://google.com>
 
 ## Formatting Links
 
 Let's Connect on **[LinkedIn](https://www.linkedin.com/in/amraha-anwar-45bb342b3/)**
+
 Let's Connect on *[LinkedIn](https://www.linkedin.com/in/amraha-anwar-45bb342b3/)*
 
 
 ## Images
 
-![Life is colorful](/MARKDOWN/asset.png)
+![Life is colorful](/MARKDOWN/asset.png "hey")
 
+--- 
 
 ## Clickable Images
 
 [![Life is Beautiful](/MARKDOWN/girl.png)](https://google.com)
+
+--- 
+
+## Emojis
+
