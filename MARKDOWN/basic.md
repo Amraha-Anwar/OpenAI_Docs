@@ -9,20 +9,46 @@ Heading 2 Another method
 ##### Heading 5
 ###### Heading 6
 
+---
 
 this is a paragraph
 
+---
 
 this is the first line and here<br>we broke the line
 
+---
 
 **this is bold**  
 __this is also bold__  
   
+---
 
 *this is italic*  
 _this is also italic_  
 
+---
 
 ***this is bold and italic***  
 ___this is also bold and italic___  
+
+---
+
+## Colors Unordered List
+- Black
+- Purple
+- Mustard
+- Pink
+
+## Colors Unordered List
+* Black
+* Purple
+* Mustard
+* Pink
+
+## Colors Ordered List
+1. Black
+2. Purple
+3. Mustard
+4. Pink
+
