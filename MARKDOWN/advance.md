@@ -1,9 +1,20 @@
+## Backticks
+
+`The breeze carried a quiet sense of peace.`
+
 ## Code
+```typescript
+console.log("Hello world:)")
+```
 
-At the command prompt,
-type `nano`.  
-H`2`O
 
-## Escaping Backticks
-``This is a `escaping` backtick.``
+```python
+print("Hello World:)")
+```
 
+
+## Table
+|  ID  |  Name  |
+|------|--------|
+| 1234 | Amraha |
+| 5678 | Zara   |
