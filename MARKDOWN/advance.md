@@ -63,4 +63,4 @@ Let's Connect on *[LinkedIn](https://www.linkedin.com/in/amraha-anwar-45bb342b3/
 
 ## Clickable Images
 
-[![Life is Beautiful](/MARKDOWN/girl.png)(https://google.com)
+[![Life is Beautiful](/MARKDOWN/girl.png)](https://google.com)
