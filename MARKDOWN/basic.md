@@ -46,14 +46,41 @@ ___this is also bold and italic___
 * Mustard
 * Pink
 
-## Colors Ordered List
-1. Black
-2. Purple
-3. Mustard
-4. Pink
+## Colors Unordered List
++ Black
++ Purple
++ Mustard
++ Pink
 
-## Colors Ordered List
-1. Black
-6. Purple
-2. Mustard
-8. Pink
+## Nested Unordered List
+* Black
+* Purple
+    * Mustard
+    * Pink
+* Red
+
+## Ordered List
+1. One
+2. Two
+3. Three
+4. Four
+
+## Ordered List
+1. One
+6. Two
+2. Three
+8. Four
+
+## Nested Ordered List
+1. One
+2. Two   
+    3. Three
+    4. Four
+5. Five
+
+## Ordered + Unordered List
+1. One
+2. Two
+    - Black
+    - Red
+3. Three 
