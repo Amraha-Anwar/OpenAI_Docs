@@ -84,3 +84,30 @@ ___this is also bold and italic___
     - Black
     - Red
 3. Three 
+
+---
+
+## Bockquotes
+
+> The sky looked brighter after the morning rain.
+
+## Multi-liner Blockquotes
+
+> Coffee in hand, I watched the city slowly wake up.
+>
+> Everything felt calm before the rush began.
+
+## Nested Blockquotes
+
+> Coffee in hand, I watched the city slowly wake up.
+>
+>> Everything felt calm before the rush began.
+
+## Blockquotes with other Elements
+
+> ### The quarterly results look great!
+>
+> - Revenue was off the chart.
+> - Profits were higher than ever.
+>
+> **Everything** is going according to *plan*
