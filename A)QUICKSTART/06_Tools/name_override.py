@@ -6,7 +6,7 @@ import random
 
 load_dotenv()
 
-@function_tool(name_override="number_picker")  # now this function's name is 'number_picker' instead of 'random_number'
+@function_tool(name_override="number_picker", description_override="Pick a number for user")  # now this function's name is 'number_picker' instead of 'random_number'
 def random_number()->str:
     """generate and returns random number"""
     num = random.randint(1, 10)
@@ -43,7 +43,7 @@ asyncio.run(main())
 # OUTPUT 👇🏻
 
 # Tool Name: number_picker
-# Tool Description: generate and returns random number
+# Tool Description: Pick a number for user
 # JSON Schema:
 # {
 #   "properties": {},
@@ -53,4 +53,4 @@ asyncio.run(main())
 #   "required": []
 # }
 
-# Final Output: The random number I picked is ⭐ 10 ⭐.
+# Final Output: Your random number is ⭐ 3 ⭐.
