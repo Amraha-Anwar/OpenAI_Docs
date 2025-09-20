@@ -54,6 +54,3 @@ asyncio.run(main())
 # "Ciao! Spero che tu stia bene e che la tua giornata sia fantastica! A presto!"
 # Italian Speaker
 
-
-# 📌 We can run an agent with a tool in 1 turn by setting tool_use_behavior = "stop_on_first_tool".
-# but with the sub-agent  (handoff concept), we can pass the sub-agents as tools then set the tool_use_behavior to 'stop_on_first_tool'.
