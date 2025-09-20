@@ -23,11 +23,15 @@
 
 - *STEP3*: The agent takes the original query, the LLM's previous reasoning, and the new tool output and sends it all back to the LLM.  
 
-- *STEP4(LLM's Final Answer)* : The LLM now has all the information it needs. It processes the tool output and formulates the final, human-readable response. The agent then provides this to the user.  
+- *STEP4(LLM's Final Answer)* : The LLM now has all the information it needs. It processes the tool output and formulates the final, human-readable response. The agent then provides this to the user.    
+
+
 
 
 📌 By setting  `tool_use_behavior = 'stop_on_first_tool'` we can run an agent with a tool in a single turn  
 Similarly, with the sub-agent (handoff) concept, we can pass sub-agents as `agents as tools` and apply the same tool_use_behavior setting.
+
+
 
 
 ---
