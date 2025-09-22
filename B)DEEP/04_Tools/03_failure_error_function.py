@@ -1,6 +1,5 @@
 from agents import Agent, Runner, function_tool, RunContextWrapper
 from dotenv import load_dotenv
-import asyncio
 
 load_dotenv()
 
@@ -25,7 +24,7 @@ agent = Agent(
     name = "Mathematician",
     instructions = "You are a mathematician. use tool [sum] for addition tasks. Don't answer by yourself",
     model = 'gpt-4o-mini',
-    tools = [sum]
+    tools = [sum],
 )
 
 result = Runner.run_sync(
