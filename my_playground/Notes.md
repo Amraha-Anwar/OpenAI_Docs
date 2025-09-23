@@ -1,8 +1,8 @@
 # Understanding the concept of **MAX_TURNS**
-
+<br>
 
 ## The Flow of **TURNS with Tool**
-
+<br>
 
 ### Turn 1: **The Reasoning Turn**
 
@@ -13,6 +13,8 @@
 
 - *STEP3*: The LLM's output, based on its internal reasoning, is to choose a tool and specify the arguments to call it with. The LLM doesn't give a final answer yet because it needs the tool's result.  
 
+<br>
+<br>
 
 ### Turn 2: **The Acting and Finalizing Turn**
 
@@ -88,7 +90,6 @@ print(response.final_output)
 📌 This error occurs when the model is explicitly instructed to use a tool via `(tool_choice = 'required')`, but the tool itself is disabled `(is_enabled = False)`. The request fails because it creates a logical contradiction: the model is required to use a tool that is not available to it.
 
 <br>
-<br>
 
 ---
 
@@ -138,7 +139,6 @@ print(response.final_output)
 
 📌 This response is generated when a tool is enabled `(is_enabled = True)` but the model is explicitly forbidden from using it `(tool_choice = 'none')`. The model, adhering to its instructions, cannot call the tool and instead produces a pre-defined, apologetic response.
 
-<br>
 <br>
 
 ---
