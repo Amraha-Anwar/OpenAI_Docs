@@ -4,7 +4,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 async def enabled_func(ctx: RunContextWrapper, agent: Agent)-> bool:
-    return True
+    if input == "what is 2+2":      #we can implement any type of conditions here and this function will decide either to enable the tool or not (by following the condition)
+        return True
+    print("I'm sorry! The tool is disabbled at the backend")
+    return False
 
 @function_tool(is_enabled = enabled_func)
 def add(a: int, b: int) -> int:
@@ -24,5 +27,5 @@ agent = Agent(
     model='gpt-4o-mini', 
     tools=[add],
 )
-result = Runner.run_sync(starting_agent=agent, input="What is 2+2")
+result = Runner.run_sync(starting_agent=agent, input="What is 4+2")
 print(result.final_output)
