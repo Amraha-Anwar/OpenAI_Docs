@@ -1,15 +1,20 @@
 from agents import Agent, Runner, function_tool, RunContextWrapper
 from dotenv import load_dotenv
+from pydantic import BaseModel
 
 load_dotenv()
 
-async def enabled_func(ctx: RunContextWrapper, agent: Agent)-> bool:
-    if result.input == "what is 2+2":      #we can implement any type of conditions here and this function will decide either to enable the tool or not (by following the condition)
-        return True
-    print("I'm sorry! The tool is disabbled at the backend")
-    return False
+class MyContext(BaseModel):
+    user_input: str
 
-@function_tool(is_enabled = enabled_func)
+async def enabled_func(ctx: RunContextWrapper[MyContext], agent: Agent) -> bool:
+    if ctx.context.user_input == "What is 2+2":
+        return True
+    else:
+        print("I'm sorry! The tool is disabled at the backend")
+        return False
+
+@function_tool(is_enabled=enabled_func)
 def add(a: int, b: int) -> int:
     """return the sum of two numbers
 
@@ -21,13 +26,16 @@ def add(a: int, b: int) -> int:
     return a + b
 
 agent = Agent(
-    name="Mathematician", 
-    instructions="You are math expert. If user asks you to sum any number you must have to use the tool [add]"
-    "If tool is not available, do apology and Don't reply by yourself.", 
-    model='gpt-4o-mini', 
+    name="Mathematician",
+    instructions="You are a math expert. If the user asks you to sum any numbers, you must use the [add] tool. "
+    "If the tool is not available, apologize and do not reply by yourself.",
+    model='gpt-4o-mini',
     tools=[add],
 )
-result = Runner.run_sync(starting_agent=agent, input="What is 2+2")
+
+my_context = MyContext(user_input="What is 2+2")
+
+result = Runner.run_sync(starting_agent=agent, input=my_context.user_input, context=my_context)
 print(result.final_output)
 
 
