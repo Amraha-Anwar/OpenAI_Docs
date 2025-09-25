@@ -30,6 +30,8 @@ for tool in agent.tools:
         print(f"Is enabled: {tool.is_enabled}")
         print()
 
+
+
 # OUTPUT 👇🏻
 
 # The sum of 2 + 2 is 4.
