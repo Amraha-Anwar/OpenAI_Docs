@@ -8,7 +8,7 @@ class MyContext(BaseModel):
     user_input: str
 
 async def enabled_func(ctx: RunContextWrapper[MyContext], agent: Agent) -> bool:
-    if ctx.context.user_input == "What is 2+2":
+    if user_input == "What is 2+2":
         return True
     else:
         print("I'm sorry! The tool is disabled at the backend")
@@ -33,9 +33,9 @@ agent = Agent(
     tools=[add],
 )
 
-my_context = MyContext(user_input="What is 2+2")
+user_input="What is 2+2"
 
-result = Runner.run_sync(starting_agent=agent, input=my_context.user_input, context=my_context)
+result = Runner.run_sync(starting_agent=agent, input=user_input)
 print(result.final_output)
 
 
